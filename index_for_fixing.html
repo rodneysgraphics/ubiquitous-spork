@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Triple Binary Tools</title>
+
+
+    <script>
+
+
+function main() {
+  var string1 = document.getElementById("string1").value;
+  var string2 = document.getElementById("string2").value;
+  var string3 = document.getElementById("string3").value;
+  var input1 = parseFloat(string1) * 100;
+  var input2 = parseFloat(string2) * 100;
+  var input3 = parseFloat(string3.join("")) * 100;
+  document.getElementById("output1").innerHTML = input1;
+  document.getElementById("output2").innerHTML = input2;
+  document.getElementById("output3").innerHTML = input3;
+}
+
+function convert3() {
+  var input3 = document.getElementById("input3").value;
+  var output3 = parseFloat(input3) * 100;
+  document.getElementById("output3").innerHTML = output3;
+}
+
+main();
+
+
+//text to binary main String//
+
+
+
+function convertToBinary() {
+  // Get the input text
+  var inputText = document.getElementById("input5").value;
+
+  // Convert each character to binary and join them together without spaces
+  var binaryText = inputText.split('').map(function(char) {
+    var binary5 = char.charCodeAt(0).toString(2);
+    while (binary5.length < 8) {
+      binary5 = '0' + binary5;
+    }
+    return binary5;
+  }).join('');
+
+  // Set the output text
+  document.getElementById("output5").innerHTML = binaryText;
+
+  // Set the value of the binary_code element to the binary string
+  document.getElementById("binary_code").value = binaryText;
+
+
+}
+//text to binary main String//
+
+
+//text to binary second String//
+
+
+
+function convertToBinary2() {
+  // Get the input text
+  var inputText = document.getElementById("input6").value;
+
+  // Convert each character to binary and join them together without spaces
+  var binaryText2 = inputText.split('').map(function(char) {
+    var binary6 = char.charCodeAt(0).toString(2);
+    while (binary6.length < 8) {
+      binary6 = '0' + binary6;
+    }
+    return binary6;
+  }).join('');
+
+  // Set the output text
+  document.getElementById("output6").innerHTML = binaryText2;
+
+  // Set the value of the binary_code element to the binary string
+  document.getElementById("binary2").value = binaryText2;
+
+
+}
+//text to binary second String//
+
+
+//text to binary third String//
+
+
+
+function convertToBinary3() {
+  // Get the input text
+  var inputText = document.getElementById("input7").value;
+
+  // Convert each character to binary and join them together without spaces
+  var binaryText3 = inputText.split('').map(function(char) {
+    var binary7 = char.charCodeAt(0).toString(2);
+    while (binary7.length < 8) {
+      binary7 = '0' + binary7;
+    }
+    return binary7;
+  }).join('');
+
+  // Set the output text
+  document.getElementById("output7").innerHTML = binaryText3;
+
+  // Set the value of the binary_code element to the binary string
+  document.getElementById("binary3").value = binaryText3;
+
+
+}
+//text to binary third String//
+
+
+
+
+//String Split//
+
+
+function splitBinary() {
+    let binary_code = document.getElementById("binary_code").value;
+    let string1 = "";
+    let string2 = "";
+    for (let i = 0; i < binary_code.length; i++) {
+      if (binary_code[i] === "0") {
+        string1 += "0";
+        string2 += "_";
+      } else if (binary_code[i] === "1") {
+        string1 += "_";
+        string2 += "1";
+      }
+    }
+    document.getElementById("output").innerHTML = "String 1: " + string1 + "<br>" + "String 2: " + string2;
+
+      // Get the value of the output textarea
+  var output = document.getElementById("output").value;
+  // Set the value of the input textarea to the output value
+  document.getElementById("string1").value = string1;
+  document.getElementById("string2").value = string2;
+  }
+
+  //String Split//
+
+
+  //String Merge string 1//
+
+  function mergeStrings1() {
+    // Get the values of String1 and Binary_2 from the text area boxes
+    var string1 = document.getElementById("string1").value;
+    var binaryString = document.getElementById("binary2").value;
+
+    var mergedString1 = "";
+    var binaryStringIndex = 0;
+
+    // Loop through the string1 characters
+    for (var i = 0; i < string1.length; i++) {
+        // Check if the character is an underscore
+        if (string1[i] == "_") {
+            mergedString1 += "_";
+        } else {
+            // Check if we've reached the end of the binary string
+            if (binaryStringIndex < binaryString.length) {
+                mergedString1 += binaryString[binaryStringIndex];
+                binaryStringIndex++;
+            } else {
+                mergedString1 += "0";
+            }
+        }
+    }
+
+    // Append underscores to the merged string until it's the same length as the input underscore string
+    while (mergedString1.length < string1.length) {
+        mergedString1 += "_";
+    }
+
+    // Display the output in the "output" text area
+    document.getElementById("output1").value = mergedString1;
+
+    var output = document.getElementById("output1").value;
+    // Set the value of the input textarea to the output value
+    document.getElementById("string11").value = mergedString1;
+   
+}
+
+
+ // String Merge string 1 //
+
+// String Merge Strinng 2 //
+
+
+function mergeStrings2() {
+    // Get the values of string2 and Binary_2 from the text area boxes
+    var string2 = document.getElementById("string2").value;
+    var binaryString = document.getElementById("binary3").value;
+
+    var mergedString2 = "";
+    var binaryStringIndex = 1;
+
+    // Loop through the string2 characters
+    for (var i = 0; i < string2.length; i++) {
+        // Check if the character is an underscore
+        if (string2[i] == "_") {
+            mergedString2 += "_";
+        } else {
+            // Check if we've reached the end of the binary string
+            if (binaryStringIndex <= binaryString.length) {
+                if (binaryString[binaryStringIndex-1] == "1") {
+                    mergedString2 += "2";
+                } else {
+                    mergedString2 += "3";
+                }
+                binaryStringIndex++;
+            } else {
+                mergedString2 += "3";
+            }
+        }
+    }
+
+    // Display the output in the "output" text area
+    document.getElementById("output2").value = mergedString2;
+
+    var output = document.getElementById("output2").value;
+    // Set the value of the input textarea to the output value
+    document.getElementById("string22").value = mergedString2;
+
+   
+}
+
+
+
+
+// String Merge Strinng 2 //
+
+//Triple Binary String Merger //
+
+function mergeStrings3() {
+    let string11 = document.getElementById("string11").value;
+    let string22 = document.getElementById("string22").value;
+    
+    let mergedString3 = string11.split("").map((c, i) => c === "_" ? string22[i] : c).join("");
+    
+    document.getElementById("result3").innerHTML = mergedString3;
+  
+
+       // Get the value of the output textarea
+       var output = document.getElementById("result3").value;
+       // Set the value of the input textarea to the output value
+       document.getElementById("binary_code2").value = mergedString3;
+
+
+    
+  }
+
+  // Triple Binary String Merger //
+
+  // Split Binary Code//
+
+  function splitBinary2() {
+    let binary_code2 = document.getElementById("binary_code2").value;
+    let string111 = binary_code2;
+    let string222 = "";
+    let string333 = "";
+    for (let i = 0; i < binary_code2.length; i++) {
+      if (binary_code2[i] === "0") {
+        string222 += "0";
+      } else if (binary_code2[i] === "1") {
+        string222 += "1";
+      }
+      if (binary_code2[i] === "2") {
+        string333 += "2";
+      } else if (binary_code2[i] === "3") {
+        string333 += "3";
+      }
+    }
+    string222 = string222.replace(/_/g, "");
+    string333 = string333.replace(/_/g, "");
+    document.getElementById("output4").innerHTML = "String 1: " + string111 + "<br>" + "String 2: " + string222 + "<br>" + "String 3: " + string333;
+
+
+         // Get the value of the output textarea
+         var output4 = document.getElementById("output4").value;
+         // Set the value of the input textarea to the output value
+         document.getElementById("string1").value = string111;
+         document.getElementById("string2").value = string222;
+         document.getElementById("string3").value = string333;
+
+
+         convertAll();
+
+            }
+
+
+
+
+
+  // Split Binary Code //
+
+
+  // String Formatter  //
+  function convert1() {
+    let input = document.getElementById("input1").value;
+    let output = "";
+
+    for (let i = 0; i < input.length; i++) {
+      if (input[i] === "0") {
+        output += "0";
+      } else if (input[i] === "3") {
+        output += "1";
+      } else if (input[i] === "2") {
+        output += "1";
+      } else if (input[i] === "1") {
+        output += "0";
+      }
+    }
+
+    document.getElementById("output1_1").value = output;
+
+
+
+    var string1 = document.getElementById("string1");
+    var input1 = document.getElementById("input1");
+    
+    // Get the value of string1 and set it as the value of input1
+    input1.value = string1.value.toUpperCase();
+
+
+  }
+
+
+
+  function convert2() {
+    let input = document.getElementById("input2").value;
+    let output = "";
+
+    for (let i = 0; i < input.length; i++) {
+      if (input[i] === "0") {
+        output += "0";
+      } else if (input[i] === "1") 
+        output += "1";
+    }
+
+    document.getElementById("output2_2").value = output;
+
+
+
+    var string2 = document.getElementById("string2");
+    var input2 = document.getElementById("input2");
+    
+    // Get the value of string1 and set it as the value of input1
+    input2.value = string2.value.toUpperCase();
+
+
+
+  }
+
+  function convert3() {
+
+
+
+    let input = document.getElementById("input3").value;
+    let output = "";
+
+    for (let i = 0; i < input.length; i++) {
+      if (input[i] === "3") {
+        output += "0";
+      } else if (input[i] === "2") 
+        output += "1";
+    }
+
+
+    document.getElementById("output3_3").value = output;
+
+
+    var input3 = document.getElementById("input3").value;
+  var output3 = parseFloat(input3) * 100;
+  document.getElementById("output3").innerHTML = output3;
+
+
+        ///////////////////////////////////////////////////////////needs to be fixed
+     //   var string3 = document.getElementById("string3");
+      //  var input3 = document.getElementById("input3");
+        
+        // Get the value of string1 and set it as the value of input1
+      //  input3.value = string3.value.toUpperCase();
+
+
+
+   ///////////////////////////////////////////////////////////needs to be fixed
+
+
+   //document.getElementById("output3_3").value = output;
+
+   //var string3 = document.getElementById("string3");
+  // var input3 = document.getElementById("input3");
+ 
+   // Get the value of string3 and set it as the value of input3
+   //input3.value = string3.value.toUpperCase();
+   
+   //document.getElementById("output3_3").value = output;
+
+  // var string3 = document.getElementById("string3");
+  // var input3 = document.getElementById("input3");
+ 
+   // Get the value of string3 and set it as the value of input3
+  // input3.value = string3.value.toUpperCase();
+
+
+
+  }
+
+
+  function convertAll() {
+    convert1();
+    convert2();
+    convert3();
+
+  // Get the value of the output textarea
+  var string3 = document.getElementById("string3").value;
+  // Set the value of the input textarea to the output value
+  document.getElementById("input3").value = string3;
+
+
+  }
+
+
+  // String Formatter //
+
+
+
+  function convertBinary() {
+    const binaryInput1 = document.getElementById("binaryInput1").value.replace(/[^01]/g, '');
+    const binaryInput2 = document.getElementById("binaryInput2").value.replace(/[^01]/g, '');
+    const binaryInput3 = document.getElementById("binaryInput3").value.replace(/[^01]/g, '');
+    
+    const binaryArrays = [binaryInput1, binaryInput2, binaryInput3].map(input => input.match(/.{1,8}/g));
+    
+    const textArray = [];
+    binaryArrays.forEach(binaryArray => {
+      const textLine = binaryArray.reduce((textLine, binary) => {
+        const decimal = parseInt(binary, 2);
+        if (decimal >= 32 && decimal <= 126) {
+          return textLine + String.fromCharCode(decimal);
+        }
+        return textLine;
+      }, '');
+      textArray.push(textLine);
+    });
+    const textOutput = document.getElementById("textOutput");
+    textOutput.innerHTML = textArray.join("<br>");
+  }
+
+  
+    </script>
+
+    <style>
+      @font-face {
+        font-family: 'My Custom Font';
+        src: url('fonts/triple-binary.ttf');
+        /* replace 'path/to/my/custom/font.ttf' with the path to your font file */
+      }
+      #result3 {
+        font-family: 'My Custom Font', sans-serif;
+        /* use the custom font for #result3 */
+      }
+    </style>
+
+
+  </head>
+  <body>
+
+    <h1>Instructions</h1>
+<br>
+    <b>Step1</b>
+    <br>
+    Text to Binary String 1 > Enter text in textarea >Click Convert Binary String
+    <br>
+    Text to Binary String 2 > Enter text in textarea >Click Convert Binary String
+    <br>
+    Text to Binary String 3 > Enter text in textarea >Click Convert Binary String
+    <br>    
+    <br>
+    <b>Step2</b>
+    <br>
+    String Split
+    <br>
+    > Click Split Binary Code
+    <br>
+    <br>
+    <b>Step3</b>
+    <br>
+    String 1 Merge with Binary2 > Click Merge Strings
+    <br>
+    String 2 Merge with Binary3 > Click Merge Strings
+    <br>
+    <br>
+    <b>Step4</b>
+    <br>
+    Triple Binary String Merger
+    <br>
+    > click Merge
+    <br>
+    Code will be converted to triple Binary in Symbol Format
+    <br>
+    <br>
+    <b>Step5</b>
+    <br>
+    Split Binary Code:
+    <br>
+    > Click Split Binary Code
+    <br>
+    <br>
+    <b>Step6</b>
+    <br>
+    Converter section isn't connected but still works if you put string 1, 2, 3 and it will convert it to binary
+    <br>
+
+    <h1>Text to Binary String 1</h1>
+    <textarea id="input5"></textarea>
+    <button onclick="convertToBinary()">Convert to Binary String 1</button>
+    <div id="output5"></div>
+
+    <h1>Text to Binary String 2</h1>
+    <textarea id="input6"></textarea>
+    <button onclick="convertToBinary2()">Convert to Binary String 2</button>
+    <div id="output6"></div>
+
+    <h1>Text to Binary String 3</h1>
+    <textarea id="input7"></textarea>
+    <button onclick="convertToBinary3()">Convert to Binary String 2</button>
+    <div id="output7"></div>
+  
+
+    <br>
+    <h1>String Split</h1>
+    <label for="binary_code">Binary Code:</label>
+    <textarea id="binary_code"></textarea><br><br>
+    <button onclick="splitBinary()">Split Binary Code</button><br><br>
+    <div id="output"></div>
+    <br>
+
+
+
+    <h1><h1>String 1 Merge with Binary2</h1>
+    <br>
+
+
+    <label for="string1">String1:</label>
+    <textarea id="string1" name="string1"></textarea>
+
+    <label for="binary2">Binary_1:</label>
+    <textarea id="binary2" name="binary2"></textarea>
+
+    <button onclick="mergeStrings1()">Merge Strings</button>
+
+    <label for="output1">Output:</label>
+    <textarea id="output1" name="output1" readonly></textarea>
+    <br>
+
+
+
+
+    <h1>String 2 Merge with Binary3</h1>
+    <br>
+
+
+    <label for="string2">string2:</label>
+    <textarea id="string2" name="string2"></textarea>
+
+    <label for="binary3">Binary_2:</label>
+    <textarea id="binary3" name="binary3"></textarea>
+
+    <button onclick="mergeStrings2()">Merge Strings</button>
+
+    <label for="output2">Output:</label>
+    <textarea id="output2" name="output2" readonly></textarea>
+
+
+
+    <br>
+    <h1>Triple Binary String Merger</h1>
+    <br>
+    <form>
+      <label for="string11">String 1:</label>
+      <input type="text" id="string11" name="string11"><br>
+      <label for="string22">String 2:</label>
+      <input type="text" id="string22" name="string22"><br>
+      <br>
+      <button type="button" onclick="mergeStrings3()">Merge</button>
+    </form>
+  
+    <p id="result3">
+  <br>
+    <p  id="result3">
+    </p>
+
+
+    <h2>Split Binary Code:</h2>
+    <label for="binary_code2">Split Binary Code:</label>
+    <textarea id="binary_code2"></textarea><br><br>
+    <button onclick="splitBinary2()">Split Binary Code</button><br><br>
+    <div id="output4"></div>
+
+<br>
+
+<title>String Converters</title>
+</head>
+<body>
+	<h2>String_1 Converter</h2>
+	<label for="input1">Input:</label>
+	<input type="text" id="input1"><br><br>
+
+	<h2>String_2 Converter</h2>
+	<label for="input2">Input:</label>
+	<input type="text" id="input2"><br><br>
+
+	<h2>String_3 Converter</h2>
+	<label for="input3">Input:</label>
+	<input type="text" id="input3"><br><br>
+
+
+	<button onclick="convertAll()">Convert All</button><br><br>
+
+	<label for="output1_1">Output 1:</label>
+	<textarea id="output1_1"></textarea><br><br>
+
+	<label for="output2_2">Output 2:</label>
+	<textarea id="output2_2"></textarea><br><br>
+
+	<label for="output3_3">Output 3:</label>
+	<textarea id="output3_3"></textarea><br><br>
+
+
+
+
+
+  <title>Binary to Text Converter</title>
+  <textarea id="binaryInput1" rows="10" cols="50"></textarea>
+  <br>
+  <textarea id="binaryInput2" rows="10" cols="50"></textarea>
+  <br>
+  <textarea id="binaryInput3" rows="10" cols="50"></textarea>
+  <br>
+  <button onclick="convertBinary()">Convert</button>
+  <br>
+  <h2>Final Conversion</h2>
+  <p id="textOutput"></p>
+ 
+
+</html>
